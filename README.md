@@ -1,6 +1,6 @@
-# sfml-ru
+# sfml-ru - перевод документации на русский язык
 
-Вольный перевод статей из серии [Tutorials for SFML 2.5](https://www.sfml-dev.org/tutorials/2.5/)
+> Вольный перевод статей из серии [Tutorials for SFML 2.5](https://www.sfml-dev.org/tutorials/2.5/)
 
 Системный модуль
 - [Потоки (Threads)](https://github.com/ikrofos/sfml-ru/blob/main/threads.md)
