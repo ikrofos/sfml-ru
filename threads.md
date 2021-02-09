@@ -19,7 +19,7 @@
 
 ## Создание потока с помощью SFML
 
-Хватит разговоров, давайте посмотрим код. Класс, который позволяет создавать потоки в SFML, есть [sf::Thread (en)[https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Thread.php], и вот как он выглядит в действии:
+Хватит разговоров, давайте посмотрим код. Класс, который позволяет создавать потоки в SFML, есть [sf::Thread (en)](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Thread.php), и вот как он выглядит в действии:
 
 ```
 #include <SFML/System.hpp>
