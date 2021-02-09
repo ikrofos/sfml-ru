@@ -1,6 +1,6 @@
 # Потоки
 
-> Вольный перевод дукументации [Threads](https://www.sfml-dev.org/tutorials/2.5/system-thread.php#what-is-a-thread)
+> Вольный перевод документации [Threads](https://www.sfml-dev.org/tutorials/2.5/system-thread.php#what-is-a-thread)
 
 ## Что такое поток?
 
