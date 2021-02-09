@@ -1,4 +1,4 @@
-# sfml-ru - перевод документации на русский язык
+# Simple and Fast Multimedia Library (SFML) - русская документация
 
 > Вольный перевод статей из серии [Tutorials for SFML 2.5](https://www.sfml-dev.org/tutorials/2.5/)
 
