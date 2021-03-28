@@ -107,9 +107,56 @@ window.draw(vertices, 2, sf::Lines);
 | sf::TriangleFan  | 	Набор треугольников, соединенных с центральной точкой. Первая вершина - это центр, затем каждая новая вершина определяет новый треугольник, используя центр и предыдущую вершину.  | ![](https://www.sfml-dev.org/tutorials/2.5/images/graphics-vertex-array-triangle-fan.png) |
 | sf::Quads  | 	Набор несвязанных четырехугольников. 4 точки каждой четверки должны быть определены последовательно, либо по часовой стрелке, либо против часовой стрелки.  | ![](https://www.sfml-dev.org/tutorials/2.5/images/graphics-vertex-array-quads.png) |
 
-	
-	
+## Текстурирование
 
+Как и другие объекты SFML, массивы вершин также могут быть текстурированы. Для этого вам нужно будет изменить texCoordsатрибут вершин. Этот атрибут определяет, какой пиксель текстуры сопоставлен с вершиной.
+
+```
+// create a quad
+sf::VertexArray quad(sf::Quads, 4);
+
+// define it as a rectangle, located at (10, 10) and with size 100x100
+quad[0].position = sf::Vector2f(10.f, 10.f);
+quad[1].position = sf::Vector2f(110.f, 10.f);
+quad[2].position = sf::Vector2f(110.f, 110.f);
+quad[3].position = sf::Vector2f(10.f, 110.f);
+
+// define its texture area to be a 25x50 rectangle starting at (0, 0)
+quad[0].texCoords = sf::Vector2f(0.f, 0.f);
+quad[1].texCoords = sf::Vector2f(25.f, 0.f);
+quad[2].texCoords = sf::Vector2f(25.f, 50.f);
+quad[3].texCoords = sf::Vector2f(0.f, 50.f);
+```
+
+```
+Координаты текстуры определяются в пикселях (как и textureRectу спрайтов и фигур). Они не нормализованы (от 0 до 1), как могли ожидать люди, привыкшие к программированию OpenGL.
+```
+
+Массивы вершин - это низкоуровневые объекты, они имеют дело только с геометрией и не хранят дополнительных атрибутов, таких как текстура. Чтобы нарисовать массив вершин с текстурой, вы должны передать его непосредственно в drawфункцию:
+
+```
+sf::VertexArray vertices;
+sf::Texture texture;
+
+...
+
+window.draw(vertices, &texture);
+```
+
+
+Это краткая версия, если вам нужно передать другие состояния рендеринга (например, режим наложения или преобразование), вы можете использовать явную версию, которая принимает sf::RenderStatesобъект:
+
+```
+sf::VertexArray vertices;
+sf::Texture texture;
+
+...
+
+sf::RenderStates states;
+states.texture = &texture;
+
+window.draw(vertices, states);
+```
 
 	
 ... некоторая часть не переведена ...
