@@ -227,3 +227,4 @@ window.draw(vertices, states);
 
 ... некоторая часть не переведена ...
 
+Теперь, когда вы знаете, как определить свою собственную текстурированную / окрашенную / трансформированную сущность, было бы неплохо обернуть ее в класс в стиле SFML? К счастью, SFML делает это легко для вас, предоставляя базовые классы [sf::Drawable (en)](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Drawable.php) и [sf::Transformable](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Transformable.php). Эти два класса являются базой для встроенных сущностей SFML таких как [sf::Sprite](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Sprite.php), [sf::Text](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Text.php) и [sf::Shape](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Shape.php).
