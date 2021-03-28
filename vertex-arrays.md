@@ -222,6 +222,8 @@ window.draw(vertices, states);
 ```
 
 Чтобы узнать больше о преобразованиях и классе [sf::Transform (en)](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Transform.php), вы можете прочитать [руководство по преобразованию сущностей](https://www.sfml-dev.org/tutorials/2.5/graphics-transform.php).
-	
+
+## Создание объекта, подобного SFML
+
 ... некоторая часть не переведена ...
 
