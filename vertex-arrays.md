@@ -173,12 +173,14 @@ sf::VertexArray vertices;
 sf::Texture texture;
 
 ...
+// используется конструктор 
+// sf::RenderStates::RenderStates (const Texture * theTexture)	
 
 window.draw(vertices, &texture);
 ```
 
 
-Это краткая версия, если вам нужно передать другие состояния рендеринга (например, режим наложения или преобразование), вы можете использовать явную версию, которая принимает sf::RenderStates объект:
+Это краткая версия, если вам нужно передать другие состояния рендеринга (например, режим наложения или преобразование), вы можете использовать явную версию, которая принимает объект [ sf::RenderStates (en)](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1RenderStates.php):
 
 ```
 sf::VertexArray vertices;
