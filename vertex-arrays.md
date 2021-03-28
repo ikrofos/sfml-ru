@@ -64,7 +64,10 @@ triangle[2].color = sf::Color::Green;
 ```
 window.draw(triangle);
 ```
-
+```
+#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+```
 <p align="center">
   <img src="https://www.sfml-dev.org/tutorials/2.5/images/graphics-vertex-array-triangle.png">
 </p>
