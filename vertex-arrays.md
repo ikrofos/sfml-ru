@@ -194,6 +194,34 @@ states.texture = &texture;
 window.draw(vertices, states);
 ```
 
+## Трансформация массива вершин
+
+Трансформация массива вершин похожа на текстурирование. Трансформация не сохраняется в массиве вершин, вы должны передать его функции отрисовки `draw()`.
+
+```
+sf::VertexArray vertices;
+sf::Transform transform;
+
+...
+
+window.draw(vertices, transform);
+```
+
+Или, если вам нужно передать другие состояния рендеринга:
+
+```
+sf::VertexArray vertices;
+sf::Transform transform;
+
+...
+
+sf::RenderStates states;
+states.transform = transform;
+
+window.draw(vertices, states);
+```
+
+Чтобы узнать больше о преобразованиях и классе [sf::Transform (en)](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Transform.php), вы можете прочитать [руководство по преобразованию сущностей](https://www.sfml-dev.org/tutorials/2.5/graphics-transform.php).
 	
 ... некоторая часть не переведена ...
 
