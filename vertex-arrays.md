@@ -230,3 +230,61 @@ window.draw(vertices, states);
 Теперь, когда вы знаете, как определить свою собственную текстурированную / окрашенную / трансформированную сущность, было бы неплохо обернуть ее в класс в стиле SFML? К счастью, SFML делает это легко для вас, предоставляя базовые классы [sf::Drawable (en)](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Drawable.php) и [sf::Transformable](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Transformable.php). Эти два класса являются базой для встроенных сущностей SFML таких как [sf::Sprite](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Sprite.php), [sf::Text](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Text.php) и [sf::Shape](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Shape.php).
 
 [sf::Drawable (en)](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Drawable.php) является интерфейсом: он объявляет единственную чистую виртуальную функцию и не имеет ни членов, ни конкретных функций. Наследование от [sf::Drawable (en)](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Drawable.php) позволяет рисовать экземпляры вашего класса так же, как классы SFML:
+```
+lass MyEntity : public sf::Drawable
+{
+private:
+
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+};
+
+MyEntity entity;
+window.draw(entity); // internally calls entity.draw
+```
+
+Обратите внимание, что это не обязательно, вы также можете иметь аналогичную drawфункцию в своем классе и просто вызывать ее с помощью entity.draw(window). Но другой способ, с sf::Drawableбазовым классом, более приятный и последовательный. Это также означает, что если вы планируете хранить массив доступных для рисования объектов, вы можете сделать это без каких-либо дополнительных усилий, поскольку все доступные для рисования объекты (SFML и ваш) являются производными от одного и того же класса.
+
+Другой базовый класс sf::Transformableне имеет виртуальной функции. Наследование автоматически добавляет ту же функцию преобразования к классу , как и другие классы SFML ( setPosition, setRotation, move, scale, ...). Вы можете узнать больше об этом классе в учебнике по преобразованию сущностей .
+
+Используя эти два базовых класса и массив вершин (в этом примере мы также добавим текстуру), вот как будет выглядеть типичный SFML-подобный графический класс:
+
+```
+class MyEntity : public sf::Drawable, public sf::Transformable
+{
+public:
+
+    // add functions to play with the entity's geometry / colors / texturing...
+
+private:
+
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
+    {
+        // apply the entity's transform -- combine it with the one that was passed by the caller
+        states.transform *= getTransform(); // getTransform() is defined by sf::Transformable
+
+        // apply the texture
+        states.texture = &m_texture;
+
+        // you may also override states.shader or states.blendMode if you want
+
+        // draw the vertex array
+        target.draw(m_vertices, states);
+    }
+
+    sf::VertexArray m_vertices;
+    sf::Texture m_texture;
+};
+```
+
+Затем вы можете использовать этот класс, как если бы он был встроенным классом SFML:
+
+MyEntity entity;
+
+// you can transform it
+entity.setPosition(10.f, 50.f);
+entity.setRotation(45.f);
+
+// you can draw it
+window.draw(entity);
+
+
