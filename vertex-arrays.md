@@ -231,7 +231,7 @@ window.draw(vertices, states);
 
 [sf::Drawable (en)](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Drawable.php) является интерфейсом: он объявляет единственную чистую виртуальную функцию и не имеет ни членов, ни конкретных функций. Наследование от [sf::Drawable (en)](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Drawable.php) позволяет рисовать экземпляры вашего класса так же, как классы SFML:
 ```
-lass MyEntity : public sf::Drawable
+**сlass** MyEntity : public sf::Drawable
 {
 private:
 
